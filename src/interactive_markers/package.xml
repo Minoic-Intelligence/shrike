@@ -1,0 +1,24 @@
+<package format="2">
+  <name>interactive_markers</name>
+  <description>
+     3D interactive marker communication library for RViz and similar tools.
+  </description>
+  <maintainer email="william@osrfoundation.org">William Woodall</maintainer>
+  <license>BSD</license>  
+  <version>1.12.0</version>
+
+  <author>David Gossow</author>
+
+  <url>http://ros.org/wiki/interactive_markers</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>rosconsole</depend>
+  <depend>roscpp</depend>
+  <depend>rospy</depend>
+  <depend>rostest</depend>
+  <depend>std_msgs</depend>
+  <depend>tf2_ros</depend>
+  <depend>tf2_geometry_msgs</depend>
+  <depend>visualization_msgs</depend>
+</package>

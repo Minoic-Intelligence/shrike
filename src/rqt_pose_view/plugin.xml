@@ -1,0 +1,17 @@
+<library path="src">
+  <class name="PoseView" type="rqt_pose_view.pose_view.PoseView" base_class_type="rqt_gui_py::Plugin">
+    <description>
+      A Python GUI plugin to visualize a geometry_msgs/Pose message.
+    </description>
+    <qtgui>
+      <group>
+        <label>Visualization</label>
+        <icon type="theme">folder</icon>
+        <statustip>Plugins related to visualization.</statustip>
+      </group>
+      <label>Pose View</label>
+      <icon type="theme">view-fullscreen</icon>
+      <statustip>A Python GUI plugin for visualizing a geometry_msgs/Pose message.</statustip>
+    </qtgui>
+  </class>
+</library>

@@ -1,0 +1,4 @@
+<package>
+  <depend package="base"/>
+  <depend package="base2"/>
+</package>

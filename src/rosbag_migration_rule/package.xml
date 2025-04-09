@@ -1,0 +1,13 @@
+<package>
+  <name>rosbag_migration_rule</name>
+  <version>1.0.1</version>
+  <description>
+    This empty package allows to export rosbag migration rule files without depending on rosbag.
+  </description>
+  <maintainer email="dthomas@osrfoundation.org">Dirk Thomas</maintainer>
+  <license>BSD</license>
+
+  <url>http://ros.org/wiki/rosbag_migration_rule</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+</package>

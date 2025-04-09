@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<?xml-model
+  href="http://download.ros.org/schema/package_format3.xsd"
+  schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>geneus</name>
+  <version>3.0.0</version>
+  <description>
+  EusLisp ROS message and service generators.
+  </description>
+  <maintainer email="k-okada@jsk.t.u-tokyo.ac.jp">Kei Okada</maintainer>
+  <license>BSD</license>
+
+  <author>Kei Okada</author>
+
+  <buildtool_depend version_gte="0.5.78">catkin</buildtool_depend>
+  <buildtool_depend condition="$ROS_PYTHON_VERSION == 2">python-setuptools</buildtool_depend>
+  <buildtool_depend condition="$ROS_PYTHON_VERSION == 3">python3-setuptools</buildtool_depend>
+
+  <build_depend>genmsg</build_depend>
+
+  <exec_depend>genmsg</exec_depend>
+
+  <export>
+    <message_generator>eus</message_generator>
+  </export>
+</package>

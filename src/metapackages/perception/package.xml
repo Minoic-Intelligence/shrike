@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<?xml-model
+  href="http://download.ros.org/schema/package_format2.xsd"
+  schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="2">
+  <name>perception</name>
+  <version>1.5.0</version>
+  <description>A metapackage to aggregate several packages.</description>
+  <maintainer email="mikael@osrfoundation.org">Mikael Arguedas</maintainer>
+  <license>BSD</license>
+
+  <url type="repository">https://github.com/ros/metapackages</url>
+  <url type="bugtracker">https://github.com/ros/metapackages/issues</url>
+
+  <author>Dirk Thomas</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>ros_base</exec_depend>
+
+  <exec_depend>image_common</exec_depend>
+  <exec_depend>image_pipeline</exec_depend>
+  <exec_depend>image_transport_plugins</exec_depend>
+  <exec_depend>laser_pipeline</exec_depend>
+  <exec_depend>perception_pcl</exec_depend>
+  <exec_depend>vision_opencv</exec_depend>
+
+  <export>
+    <metapackage/>
+  </export>
+</package>

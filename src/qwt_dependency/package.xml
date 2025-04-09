@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package>
+  <name>qwt_dependency</name>
+  <version>1.1.1</version>
+  <description>This encapsulates the Qwt dependency for a specific ROS distribution and its Qt version</description>
+  <maintainer email="dthomas@osrfoundation.org">Dirk Thomas</maintainer>
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- Python packages for Qwt 6.1 are not yet available -->
+  <!--<run_depend>python-qt-bindings-qwt61</run_depend>-->
+</package>

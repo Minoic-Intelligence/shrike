@@ -1,0 +1,4 @@
+<package>
+  <depend package="valid_package"/>
+  <depend package="invalid_package_one"/>
+</package>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<?xml-model
+  href="http://download.ros.org/schema/package_format2.xsd"
+  schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="2">
+  <name>ros_base</name>
+  <version>1.5.0</version>
+  <description>A metapackage which extends ros_core and includes other basic non-robot tools like actionlib, dynamic reconfigure, nodelets, and pluginlib.</description>
+  <maintainer email="mikael@osrfoundation.org">Mikael Arguedas</maintainer>
+  <license>BSD</license>
+
+  <url type="repository">https://github.com/ros/metapackages</url>
+  <url type="bugtracker">https://github.com/ros/metapackages/issues</url>
+
+  <author>Dirk Thomas</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>ros_core</exec_depend>
+
+  <exec_depend>actionlib</exec_depend>
+  <exec_depend>bond_core</exec_depend>
+  <exec_depend>dynamic_reconfigure</exec_depend>
+  <exec_depend>nodelet_core</exec_depend>
+
+  <export>
+    <metapackage/>
+  </export>
+</package>

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<package>
+  <name>stage</name>
+  <version>4.3.0</version>
+  <description>Mobile robot simulator http://rtv.github.com/Stage</description>
+
+  <!-- William is the mantainer/releaser for stage in ROS -->
+  <maintainer email="william@osrfoundation.org">William Woodall</maintainer>
+
+  <license>GPL</license>
+
+  <url type="website">http://rtv.github.com/Stage</url>
+  <url type="repository">https://github.com/rtv/Stage/</url>
+  <url type="bugtracker">https://github.com/rtv/Stage/issues</url>
+
+  <author email="vaughan@sfu.ca">Richard Vaughan</author>
+  <author email="gerkey@willowgarage.com">Brian Gerkey</author>
+  <author email="hedges@mobilerobots.com">Reed Hedges</author>
+  <author email="andrew.b.howard@jpl.nasa.gov">Andrew Howard</author>
+  <author email="tcollett@plan9.net.nz">Toby Collett</author>
+  <author email="pooyak@sfu.ca">Pooya Karimian</author>
+  <author email="jra11@sfu.ca">Jeremy Asher</author>
+  <author email="asc17@sfu.ca">Alex Couture-Beil</author>
+  <author email="git@killbots.net">Geoff Biggs</author>
+  <author email="jpgr87@github.com">Rich Mattes</author>
+  <author email="abbas.sadat@gmail.com">Abbas Sadat</author>
+
+  <buildtool_depend>cmake</buildtool_depend>
+  <buildtool_depend>pkg-config</buildtool_depend>
+
+  <build_depend>gtk2</build_depend>
+  <build_depend>libfltk-dev</build_depend>
+  <build_depend>libjpeg</build_depend>
+  <build_depend>libtool</build_depend>
+  <build_depend>opengl</build_depend>
+
+  <run_depend>catkin</run_depend>
+  <run_depend>libfltk-dev</run_depend>
+  <run_depend>gtk2</run_depend>
+  <run_depend>libjpeg</run_depend>
+  <run_depend>opengl</run_depend>
+
+  <export>
+    <build_type>cmake</build_type>
+  </export>
+</package>

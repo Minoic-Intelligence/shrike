@@ -1,0 +1,351 @@
+Stage RELEASE.txt
+==================
+
+These are the Stage release notes.
+
+For introduction and license see README.txt
+For installation notes see INSTALL.txt
+
+Version 4.3.0
+-------------
+* gratefully merged Adrian Böckenkamp's (CodeFinder2) fork upstream into rtv/Stage.
+* fixed corrupted strings in GUI bug
+* fixed ranger visualizations bug (only showed up on some platform/driver combos)
+* build/install changes to play nicely with ROS (for the Lunar release of stage_ros)
+
+Richard Vaughan (rtv) vaughan@sfu.ca - 2017.4.27
+
+Version 4.2.1
+-------------
+* add 'confirm_on_quit' option to world section to skip confirmation dialog on exit
+* add continuous integration support by Travis CI
+* fix segfault in ranger visualization
+* fix segfault in blockgroup.cc:236 (gluTessEndPolygon()) when model size (x,y,z) is 0.0
+* minor UI improvments (allow changing Stage's caption, allow centering the window)
+* add ability to load worlds/models from std::istream for more flexibility
+* fix compiler errors in debug build
+* make odom integration error publicly accessible (see #67)
+* don't crash/segfault in ctrl/wander when there's only 1 range sensor (see #59)
+* fix errors reported by the most recent gcc 6.3.1 (on Debian 9 SID), #63 in particular
+* improve/unify coding style (strip trailing spaces, use clang-format)
+* fix compiler error reported with strict flags (-Wall -Wextra -pedantic -Werror)
+* fix issues reported by cppcheck v1.72
+* minor updates in docs (cosmetics, make comments visible in doxygen)
+
+Adrian Böckenkamp (CodeFinder2) boeckenkamp@ls7.cs.tu-dortmund.de - 2017.3.23
+
+Version 4.1.1
+-------------
+* fixed bugs in libstageplugin/p_ranger.cc that prevented the plugin from building
+* updated some docs
+
+Richard Vaughan (rtv) vaughan@sfu.ca - 2012.1.11
+
+
+Version 4.1.0
+-------------
+* many bugfixes
+* support for basic dynamics: position models simulate acceleration
+  and have a new acceleration control mode.
+* visualization options can be loaded from and saved to worldfiles
+* API change: new World::Run() methed provides the same interface to
+  GUI and non-GUI worlds (by chmp@github)
+* saved screenshots are numbered with leading zeros for convenience
+  when using movie-making tools (by mani-monaj@github)
+* major performance enhancement: position updates now run in parallel
+  with sensor updates, using a double-buffer-style alternating pair of
+  occupancy grids
+* several minor performance enhancements
+* much faster debug visualization (occupancy grid and voxel views)
+* build scripts are more portable
+
+
+Richard Vaughan (rtv) vaughan@sfu.ca - 2011.12.28
+
+Version 4.0.1
+-------------
+
+- Bugfixes
+- more sparing use of memory to support very large worlds (square kms!)
+
+Richard Vaughan (rtv) vaughan@sfu.ca - 2010.12.2
+
+Version 4.0.0
+-------------
+
+Major new release since worldfile syntax and API have both changed due
+to a new unified ranger model. Laser model is now deprecated in favour
+of the ranger. This follows a similar change in Player 3, where laser
+interface support was deprecated but still in place due to lack of
+Stage support. This release fixes that. 
+
+Also includes many bugfixes, a much improved build system and some
+performance enhancements and documentation improvements.
+
+Richard Vaughan (rtv) vaughan@sfu.ca - 2010.11.25
+
+Version 3.2.2
+-------------
+
+Bugfix, performance and cleanup release. This is the fastest Stage
+ever for most use cases. 
+
+Externally visible changes
+
+ - removed property database from models. This will break user code
+ that depends on it. The rationale for removing it is that it is not
+ useful to libstage users, and only to libstageplugin users who used
+ it for Player-based IPC. It should be provided by a Player
+ driver. Removing this little-used code is a useful clean up.
+
+Richard Vaughan (rtv) vaughan@sfu.ca - 2009.10.28
+
+
+Version 3.2.1
+-------------
+
+Bugfix release, contains mainly bugfixes but some performance tweaks.
+
+Richard Vaughan (rtv) vaughan@sfu.ca - 2009.10.13
+
+Version 3.2.0
+-------------
+
+This minor release fixes many bugs, has some performance improvements
+and some significant internal and API changes, including:
+
+* introduced an internal event queue, so that there is no longer any
+  atomic world update interval. Each model can have its update
+  interval specified individually
+* worldfile syntax checking improved: poses and sizes are checked for
+  correct vector length
+* pkg-config file for libstage now contains correct dependencies,
+  making it much easier to build things using libstage
+* controllers can now take an argument string from the worldfile and
+  command line
+* better powerpack model 
+* cleaned up namespace quite a bit - controllers and simulators using
+  libstage may need some simple tweaks, but the design is cleaner and
+  more consistent. 
+
+Richard Vaughan (rtv) vaughan@sfu.ca - 2009.9.12
+
+Version 3.1.0
+-------------
+
+This minor release includes some major improvements, including:
+
+* Added or reinstated models
+	* grippers
+  * linear actuator
+* Powerpacks models power consumption, charging and transferring
+* Models can provide occuapancy grids with Stg::Model::Rasterize()
+* WebStage is Stage with WebSim support
+* Many bugfixes
+* Many performance improvements, including faster raytracing
+* Better support for very large worlds
+* More example controllers in <stage>/examples/ctrl
+* Faster raytracing
+* Replaced GLib-2.0 with STL, pthreads, etc.
+* Better docs (but still lots to do here)
+
+Richard Vaughan (rtv) vaughan@sfu.ca - 2009.7.22
+
+Version 3.0.1
+-------------
+This version incorporates a number of fixes made since the previous 
+major release:
+
+* Player plugin
+  * added unit test suite to verify functionality (build instructions
+    in libstageplugin/test directory)
+  * many bug fixes
+  * blobfinder, fiducial, laser, position2d, simulation, sonar, and 
+    speech interfaces are now working correctly
+* CMake script fixes
+  * OpenGL headers located properly
+  * FLTK sourced correctly
+  * dependency failures should show up before compiling
+* fixed bug where fiducial sensor would return duplicate results
+* fixed some rendering glitches
+* blobfinder now returns blobs in the correct horizontal order
+* blobfinder sensor visualization displays in the plane of the screen
+
+Version 3.0.0
+-------------
+Stage 3.0.0 consists of these components:
+
+ * libstage - a robot simulation C++ library.
+ * libstageplugin - a simulation plugin for Player
+ * stage - a stand-alone robot simulator
+
+This is a a major new release of Stage. The main new features are:
+
+ * 2.5D models
+ * 3D user interface
+ * very much faster raytracing than 2.X series
+ * plugin code modules attach at run time to any model. Useful for data
+   filtering or complete robot controllers without Player (examples
+	included)
+ * 3D camera model, with color and depth for each pixel
+ * first "official" release of the libstage API
+ * save/save-as/reload file dialog box
+ * improved data visualization options
+ * select and drag/rotate multuple robots by shift-clicking
+
+libstageplugin still needs some work - currently it only supports
+position2d, laser and sonar interfaces It also uses too much
+CPU. Player/Stage users may choose to wait for libstageplugin to
+improve before trying Stage-3.0.
+
+Note that your Stage-2.0 world files will probably need to be updated
+to work with Stage-3.0. The main difference world file syntax is that
+poses and velocities are now specied as [x y z theta] instead of the
+old [x y theta]. Sizes are now specifed as [x y z] instead of [x y].
+
+Some useful parts of Stage 2.x have not yet been ported to 3.0,
+including
+
+* gripper & puck
+* wireless comms
+* audio comms
+* blinkenights
+
+This is the first release of a lot of new code. It has been used in my
+lab for a while now, but there are bound to be bugs and quirks. Please
+use the bug tracker and feature request system on Sourceforge to help
+us fix and improve Stage. As always, your patches are very welcome.
+
+Richard Vaughan (rtv) vaughan@sfu.ca - 2008.7.12
+
+Version 2.0.1
+-------------
+This is mainly a bugfix and performance-enhancement release. This
+release requires Player-2.0.1, released simultaneously.
+
+The only major new feature is the addition of support for Player's
+speech interface: speech bubbles show the text being "spoken" by each
+robot. The text is rendered using Pango, so non-Roman alphabets are
+supported.
+
+Richard Vaughan (rtv) vaughan@sfu.ca 2006.3.24
+
+
+Version 2.0.0
+-------------
+This is a major new release of Stage, and is intended to replace all
+previous versions. It requires Player-2.0.0 or later.
+
+Please report bugs to the tracker and let us know what you do with Stage.
+
+Richard Vaughan (rtv) vaughan@sfu.ca 2006.2.26
+
+### New Features
+
+Significant user-level changes include:
+
+- Stage is now implemented as the C library
+  libstage. Using libstage, your programs can include a
+  sophisticated robot simulator with a few lines of code. The
+  Player plugin libstageplugin is a wrapper for libstage
+  that provides simulation services to Player. Player with
+  libstageplugin is the Player/Stage system.
+
+- Player clients can draw directly in the Stage window using the
+  graphics2d interface. libstage programs can use the internal
+  user graphics API.
+
+- Configurable odometry error in position model
+
+- Gripper model that can pick up anything. Any object can be made
+  grippable/pushable by setting the the gripper_return property.
+
+- Pan-tilt-zoom (PTZ) model.
+
+- More and improved visualizations, including models leaving trails
+  over time
+
+- Any object can now have its shape specified by a bitmap file (JPG,
+  PNG, etc.).
+
+- Worldfile syntax has changed slightly, so you may need to edit your 
+  existing worlds to get them to work. Look at the example worlds in
+  (stage src)/worlds to get the idea.
+
+- Worlds can be very large (thousands of meters square).
+
+
+Version 1.6.1
+-------------
+This is a bug-fix release that replaces 1.6.0. 
+
+- Fixes several GUI bugs, including the [View/Fill Polygons] menu item.
+
+- Some code clean-up and thread-safety fixes
+
+
+Version 1.6.0
+-------------
+This release of Stage is the first after a major rewrite. There are
+bound to be bugs and teething troubles, but the Autonomy Lab 
+(http://www.cs.sfu.ca/research/groups/autonomy) has been using this 
+code for serious work for a few months now and we think it's useful 
+and usable.
+
+### Significant changes visible to the user
+
+1. Stage is now a Player plugin, instead of an executable. The key
+   benefit of this is that all Player drivers are now available for
+   use directly with Stage, including sophisticated drivers like
+   AMCL, without needing passthrough drivers.
+
+2. Stage depends on Player 1.6 or newer.
+
+3. Worldfile syntax has a changed, so you need to edit your existing
+   worlds to get them to work. Look at the example worlds in <stage
+   src>/worlds to get the idea.
+
+4. Any object can now have its shape specified by a bitmap file
+
+5. Several bitmap file formats are supported, using a third-party
+   library. Load maps and robot bodies from JPG, PNG, etc. No more PNM
+   troubles.
+
+6. Worlds can now be very large (thousands of meters square).
+
+7. Several models are missing from this release - notably the gripper
+   and puck. These will be available soon. Meanwhile, enjoy the full
+   power of Player with the basic laser, sonar, position, fiducial and
+   blobfinder models.
+
+8. Stage no longer depends on libRTK.
+
+9. Some models from previous versions may not yet be available in
+   this release (e.g. gripper & puck), but we're working on them. Let us
+   know which ones you need.
+
+
+### Significant changes under the hood
+
+1. The Stage simulation engine is now a library rather than an
+   application. The library can be used to write custom robot
+   simulations. This is very useful if you need to do synchronous control
+   of robots (e.g for perfectly repeatable experiments), or dynamically
+   create and destroy robots or other objects. You can't (yet) do this
+   though Player. Refer to the libstage reference manual 
+   (http://playerstage.sf.net/doc/stage_reference) for the API and 
+   developer docs.
+
+2. Stage is now mostly written in C. A simple object-oriented system
+   allows one level of inheritance for writing polymorphic model code.
+
+3. The underlying occupancy grid model has changed from a simple
+   fixed-size array to a sparse array of (almost) unlimited size
+   (implemented with a hash table). To compensate for the performance hit
+   of raytracing in the hash table, a three-level multiple-resolution
+   approach is used. Raytracing is now usually _much_ faster than in
+   Stage-1.3. To get an idea how this works, select the
+   View/Debug/Raytrace menu item while a laser or ranger is producing
+   data.
+
+4. Most home-rolled data structures have been replaced by glib versions.

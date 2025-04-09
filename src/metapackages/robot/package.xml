@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<?xml-model
+  href="http://download.ros.org/schema/package_format2.xsd"
+  schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="2">
+  <name>robot</name>
+  <version>1.5.0</version>
+  <description>A metapackage which extends ros_base and includes ROS libaries for any robot hardware. It may not contain any GUI dependencies.</description>
+  <maintainer email="mikael@osrfoundation.org">Mikael Arguedas</maintainer>
+  <license>BSD</license>
+
+  <url type="repository">https://github.com/ros/metapackages</url>
+  <url type="bugtracker">https://github.com/ros/metapackages/issues</url>
+
+  <author>Dirk Thomas</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>ros_base</exec_depend>
+
+  <exec_depend>control_msgs</exec_depend>
+  <exec_depend>diagnostics</exec_depend>
+  <exec_depend>executive_smach</exec_depend>
+  <exec_depend>filters</exec_depend>
+  <exec_depend>geometry</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>kdl_parser</exec_depend>
+  <!-- Ignore kdl_parser_py until it becomes usable in Ubuntu Focal -->
+  <!--<exec_depend>kdl_parser_py</exec_depend>-->
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>urdf</exec_depend>
+  <exec_depend>urdf_parser_plugin</exec_depend>
+  <exec_depend>xacro</exec_depend>
+
+  <export>
+    <metapackage/>
+  </export>
+</package>

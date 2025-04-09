@@ -1,0 +1,85 @@
+
+** BUGS **
+   
+ visualization of ranger data (see eg. hospital.world)
+
+
+** Optimization **
+
+Timing benchmarks 3600 seconds of virtual time in real time seconds:
+
+simple.world
+------------
+linux	8.89
+OS X	7.75
+     11.05 (rev 8210)
+     10.15 (rev 8295)
+
+fasr.world
+----------
+linux	16.36
+OS X	16.20 (rev 7949) 
+      19.94 (rev 8210 - new event queue is slower but more powerful and elegant)
+      14.5 (rev 8295) threads: 6: 13.7 3: 13.4
+		14.16 (rev 8329) threads 3: 13.4
+
+MBPi7 10.7 (4 threads) rev bc4d761  3 11.11.3
+  35.6
+   
+
+MBA 17.3
+MBA 23.1 (1 thread)
+MBA 19.3 (2 threads)
+
+Timing test FASR2.world 200 seconds
+-----------------------
+MBPi7 2 threads   
+
+32.3 (user 45.4) old FOR_EACH
+30.0 (user 44.2) new FOR_EACH
+
+** 3.2.0 RELEASE *
+
+ - visualizer option state in worldfile
+ - blinkenlights vs lightindicator - resolve and fix interfaces
+ - scan SF for patches
+ - fix world files
+ - docs for new models
+ - push docs to SF
+
+BUGS
+
+* [OSX only - FLTK bug?] loading window size constrains maximum window
+  size
+
+* must build before building source package so that make
+  package_source picks up config.h
+
+INCOMPLETE
+
+* per-model visualization entries in view menu
+
+DESIRABLE FEATURES
+
+* add blocks to world w/o model?
+
+
+** FUTURE RELEASES **
+
+DONE
+
+* fix benchmark controller 
+* Viewing About Box stops simulation
+* saving worldfile adds newlines after includes
+* alpha properly done
+* Fix 3D panning and scrolling
+* 3d collision detection broken - e.g. fancypioneer2dx
+* energy model & recharging
+* runtime update rate UI
+
+** 3.1.0 RELEASE *
+ - feature freeze around July 1
+ - scan SF for patches
+ - fix world files
+ - docs for new models
+ - push docs to SF

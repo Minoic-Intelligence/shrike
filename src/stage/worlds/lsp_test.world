@@ -1,0 +1,70 @@
+# lsp_test.world - test world for use with lsp_test 
+
+
+include "pioneer.inc"
+include "map.inc"
+include "sick.inc"
+
+interval_sim 100  # simulation timestep in milliseconds
+interval_real 1  # real-time interval between simulation updates in milliseconds 
+
+paused 0
+
+# configure the GUI window
+window
+(
+  size [ 700.000 700.000 ] # in pixels
+  scale 37.000                 # pixels per meter
+  show_data 1              # 1=on 0=off
+)
+
+# load an environment bitmap
+floorplan
+( 
+  name "cave"
+  size [16.000 16.000 0.600]
+  bitmap "bitmaps/cave.png"
+)
+
+# extend the pioneer2dx definition from pioneer.inc
+#
+define trickedoutpioneer pioneer2dx
+(
+  ranger()
+
+  sicklaser( pose [ 0.030 0 0 0 ]  )
+
+  fiducial
+  (
+    pose [ -0.150 0 0 0 ]
+    range_max 8
+    range_max_id 5
+  ) 
+
+  blobfinder
+  ( 
+    channel_count 6 
+    channels [ "red" "blue" "green" "cyan" "yellow" "magenta" ]  
+  )
+    
+  localization "odom"
+  localization_origin [ 0 0 0 0 ]
+)
+
+trickedoutpioneer
+(		  
+  name "r0"
+
+  fiducial_return 1
+  blob_return 1
+  pose [ -7.490 -7.490 0 45.000 ] 
+)
+
+trickedoutpioneer
+(		  
+  name "r1"
+
+  fiducial_return 2
+  blob_return 2
+  pose [ -4.19 -5.71 0 135.000 ] 
+)

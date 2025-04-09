@@ -1,0 +1,28 @@
+<package>
+  <name>diagnostics</name>
+  <version>1.11.0</version>
+  <description>diagnostics</description>
+  <author>Kevin Watts</author>
+  <author email="brice.rebsamen@gmail.com">Brice Rebsamen</author>
+  <maintainer email="guglielmo.gemignani@gmail.com">Guglielmo Gemignani</maintainer>
+  <maintainer email="namniart@gmail.com">Austin Hendrix</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://www.ros.org/wiki/diagnostics</url>
+<!-- <url type="bugtracker"></url> -->
+
+  <author>Kevin Watts</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>diagnostic_aggregator</run_depend>
+  <run_depend>diagnostic_analysis</run_depend>
+  <run_depend>diagnostic_common_diagnostics</run_depend>
+  <run_depend>diagnostic_updater</run_depend>
+  <run_depend>self_test</run_depend>
+
+  <export>
+    <metapackage/>
+  </export>
+</package>

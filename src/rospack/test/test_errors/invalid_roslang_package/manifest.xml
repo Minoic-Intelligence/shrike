@@ -1,0 +1,4 @@
+<package>
+  <depend package="invalid_package_one"/>
+  <depend package="roslang"/>
+</package>

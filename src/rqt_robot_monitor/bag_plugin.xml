@@ -1,0 +1,7 @@
+<library path="src">
+  <class name="RobotMonitorBagPlugin" type="rqt_robot_monitor.robot_monitor_bag_plugin.RobotMonitorBagPlugin" base_class_type="rqt_bag::Plugin">
+    <description>
+      An rqt_bag plugin for displaying diagnostics state
+    </description>
+  </class>
+</library>

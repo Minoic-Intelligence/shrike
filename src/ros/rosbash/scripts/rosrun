@@ -1,0 +1,150 @@
+#!/usr/bin/env bash
+
+function usage() {
+  echo "Usage: rosrun [--prefix cmd] [--debug] PACKAGE EXECUTABLE [ARGS]"
+  echo "  rosrun will locate PACKAGE and try to find"
+  echo "  an executable named EXECUTABLE in the PACKAGE tree."
+  echo "  If it finds it, it will run it with ARGS."
+}
+
+args=1
+rosrun_prefix=""
+
+function debug() {
+  return
+}
+
+while [ $args == 1 ]
+do
+  case "$1" in
+    "--help" | "-h")
+      usage
+      exit 0
+      ;;
+    "--prefix" | "-p")
+      rosrun_prefix="$2"
+      shift
+      shift
+      ;;
+    "--debug" | "-d")
+      shift
+      function debug() { echo "[rosrun]" "$@" ; }
+      ;;
+    *) # default
+      args=0
+  esac
+done
+
+if [ $# -lt 2 ]; then
+  usage
+  exit 0
+fi
+
+# early check that filename does not end with '/'
+case $2 in
+  */) echo "Invalid filename: " $2
+    exit 1
+    ;;
+esac
+
+pkg_name="$1"
+file_name="$2"
+
+function inonedir() {
+  exe=$1
+  shift
+  list_of_dirs=("$@")
+  for location in "${list_of_dirs[@]}";
+  do
+    if [[ "$exe" = "$location"* ]] ; then
+      # exe path starts with $location
+      echo "yes"
+      return
+    fi
+  done
+  echo "no"
+}
+
+if [[ -n $CMAKE_PREFIX_PATH ]]; then
+  _rosrun_IFS="$IFS"
+  IFS=$'\n'
+  catkin_package_libexec_dirs=($(catkin_find --without-underlays --libexec --share "$pkg_name" 2> /dev/null))
+  debug "Looking in catkin libexec dirs: $IFS$(catkin_find --without-underlays --libexec --share "$pkg_name" 2>&1)"
+  IFS="$_rosrun_IFS"
+  unset _rosrun_IFS
+fi
+pkgdir=$(rospack find "$pkg_name")
+debug "Looking in rospack dir: $pkgdir"
+if [[ ${#catkin_package_libexec_dirs[@]} -eq 0 && -z $pkgdir ]]; then
+  exit 2
+fi
+if [[ ! $file_name == */* ]]; then
+  # The -perm /mode usage is not available in find on the Mac or FreeBSD
+  #exepathlist=(`find $pkgdir -name $file_name -type f -perm /u+x,g+x,o+x`)
+  # -L: #3475
+  if [[ $(uname) == Darwin || $(uname) == FreeBSD ]]; then
+    _perm="+111"
+  else
+    _perm="/111"
+  fi
+  debug "Searching for $file_name with permissions $_perm"
+  exepathlist="$(find -L "${catkin_package_libexec_dirs[@]}" "$pkgdir" -name "$file_name" -type f  -perm "$_perm" ! -regex ".*$pkgdir\/build\/.*" | uniq)"
+  _rosrun_IFS="$IFS"
+  IFS=$'\n'
+  exepathlist=($exepathlist)
+  IFS="$_rosrun_IFS"
+  unset _rosrun_IFS
+  unset _perm
+  if [[ ${#exepathlist[@]} == 0 ]]; then
+    echo "[rosrun] Couldn't find executable named $file_name below $pkgdir"
+    nonexepathlist=($(find -H "$pkgdir" -name "$file_name"))
+    if [[ ${#nonexepathlist[@]} != 0 ]]; then
+      echo "[rosrun] Found the following, but they're either not files,"
+      echo "[rosrun] or not executable:"
+      for p in "${nonexepathlist[@]}"; do
+        echo "[rosrun]   ${p}"
+      done
+    fi
+    exit 3
+  elif [[ ${#exepathlist[@]} -eq 2 ]]; then
+    # If one executable is from share and another from libexec then use one from libexec.
+    # This assumes the one from libexec is a devel-space python relay script created by catkin.
+
+    # Share dirs includes devel, install, or src space locations
+    catkin_package_share_dirs=($(catkin_find --without-underlays --share "$pkg_name" 2> /dev/null))
+    debug "Looking in catkin share dirs: $IFS$(catkin_find --without-underlays --share "$pkg_name" 2>&1)"
+
+    first_share=$(inonedir "${exepathlist[0]}" "${catkin_package_share_dirs[@]}")
+    second_share=$(inonedir "${exepathlist[1]}" "${catkin_package_share_dirs[@]}")
+
+    if [[ $first_share == "no" && $second_share == "yes" ]]; then
+      debug "Assuming ${exepathlist[0]} is a devel-space relay for ${exepathlist[1]}"
+      exepathlist=(${exepathlist[0]})
+    elif [[ $second_share == "no" && $first_share == "yes" ]]; then
+      debug "Assuming ${exepathlist[1]} is a devel-space relay for ${exepathlist[0]}"
+      exepathlist=(${exepathlist[1]})
+    fi
+  fi
+
+  if [[ ${#exepathlist[@]} -gt 1 ]]; then
+    echo "[rosrun] You have chosen a non-unique executable, please pick one of the following:"
+    select opt in "${exepathlist[@]}"; do
+      exepath="$opt"
+      break
+    done
+  else
+    exepath="${exepathlist[0]}"
+  fi
+else
+  absname="$pkgdir/$file_name"
+  debug "Path given. Looing for $absname"
+  if [[ ! -f $absname || ! -x $absname ]]; then
+    echo "[rosrun] Couldn't find executable named $absname"
+    exit 3
+  fi
+  exepath="$absname"
+fi
+shift
+shift
+debug "Running $rosrun_prefix $exepath" "$@"
+exec $rosrun_prefix "$exepath" "$@"

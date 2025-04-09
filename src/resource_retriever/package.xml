@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<?xml-model
+  href="http://download.ros.org/schema/package_format3.xsd"
+  schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>resource_retriever</name>
+  <version>1.12.8</version>
+  <description>
+   This package retrieves data from url-format files such as http://,
+   ftp://, package:// file://, etc., and loads the data into memory.
+   The package:// url for ros packages is translated into a local
+   file:// url.  The resourse retriever was initially designed to load
+   mesh files into memory, but it can be used for any type of
+   data. The resource retriever is based on the the libcurl library.
+  </description>
+
+  <author email="jfaust@willowgarage.com">Josh Faust</author>
+  <author email="isucan@gmail.com">Ioan Sucan</author>
+  <maintainer email="clalancette@osrfoundation.org">Chris Lalancette</maintainer>
+  <maintainer email="sloretz@osrfoundation.org">Shane Loretz</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://ros.org/wiki/resource_retriever</url>
+  <url type="repository">https://github.com/ros/resource_retriever</url>
+  <url type="bugtracker">https://github.com/ros/resource_retriever/issues</url>
+
+  <buildtool_depend version_gte="0.5.68">catkin</buildtool_depend>
+
+  <build_depend>libcurl-dev</build_depend>
+
+  <depend>roslib</depend>
+  <depend>rosconsole</depend>
+  <depend>boost</depend>
+
+  <exec_depend>libcurl</exec_depend>
+  <exec_depend condition="$ROS_PYTHON_VERSION == 2">python-rospkg</exec_depend>
+  <exec_depend condition="$ROS_PYTHON_VERSION == 3">python3-rospkg</exec_depend>
+
+</package>

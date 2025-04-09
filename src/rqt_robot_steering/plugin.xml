@@ -1,0 +1,17 @@
+<library path="src">
+  <class name="RobotSteering" type="rqt_robot_steering.robot_steering.RobotSteering" base_class_type="rqt_gui_py::Plugin">
+    <description>
+      A Python GUI plugin to steer a robot with a geometry_msgs/Twist message.
+    </description>
+    <qtgui>
+      <group>
+        <label>Robot Tools</label>
+        <icon type="theme">folder</icon>
+        <statustip>Plugins related to robot tools.</statustip>
+      </group>
+      <label>Robot Steering</label>
+      <icon type="theme">input-gaming</icon>
+      <statustip>A Python GUI plugin for steering a robot using geometry_msgs/Twist messages.</statustip>
+    </qtgui>
+  </class>
+</library>

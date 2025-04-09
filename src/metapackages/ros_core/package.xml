@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<?xml-model
+  href="http://download.ros.org/schema/package_format2.xsd"
+  schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="2">
+  <name>ros_core</name>
+  <version>1.5.0</version>
+  <description>A metapackage to aggregate the packages required to use publish / subscribe, services, launch files, and other core ROS concepts.</description>
+  <maintainer email="mikael@osrfoundation.org">Mikael Arguedas</maintainer>
+  <license>BSD</license>
+
+  <url type="repository">https://github.com/ros/metapackages</url>
+  <url type="bugtracker">https://github.com/ros/metapackages/issues</url>
+
+  <author>Dirk Thomas</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>catkin</exec_depend>
+  <exec_depend>class_loader</exec_depend>
+  <exec_depend>cmake_modules</exec_depend>
+  <exec_depend>common_msgs</exec_depend>
+  <exec_depend>gencpp</exec_depend>
+  <exec_depend>geneus</exec_depend>
+  <exec_depend>genlisp</exec_depend>
+  <exec_depend>genmsg</exec_depend>
+  <exec_depend>gennodejs</exec_depend>
+  <exec_depend>genpy</exec_depend>
+  <exec_depend>message_generation</exec_depend>
+  <exec_depend>message_runtime</exec_depend>
+  <exec_depend>pluginlib</exec_depend>
+  <exec_depend>ros</exec_depend>
+  <exec_depend>ros_comm</exec_depend>
+  <exec_depend>rosbag_migration_rule</exec_depend>
+  <exec_depend>rosconsole</exec_depend>
+  <exec_depend>rosconsole_bridge</exec_depend>
+  <exec_depend>roscpp_core</exec_depend>
+  <exec_depend>rosgraph_msgs</exec_depend>
+  <exec_depend>roslisp</exec_depend>
+  <exec_depend>rospack</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>std_srvs</exec_depend>
+
+  <export>
+    <metapackage/>
+  </export>
+</package>

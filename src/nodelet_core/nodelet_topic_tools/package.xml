@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="2">
+  <name>nodelet_topic_tools</name>
+  <version>1.11.1</version>
+  <description>
+    This package contains common nodelet tools such as a mux, demux and throttle.
+  </description>
+  <maintainer email="geoff@openrobotics.org">Geoffrey Biggs</maintainer>
+  <license>BSD</license>
+
+  <url type="website">http://ros.org/wiki/nodelet_topic_tools</url>
+  <url type="bugtracker">https://github.com/ros/nodelet_core/issues</url>
+  <url type="repository">https://github.com/ros/nodelet_core</url>
+  <author>Radu Bogdan Rusu</author>
+  <author>Tully Foote</author>
+  <author email="michael@openrobotics.org">Michael Carroll</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>libboost-dev</build_depend>
+  <build_depend>libboost-thread-dev</build_depend>
+
+  <depend>dynamic_reconfigure</depend>
+
+  <build_export_depend>libboost-dev</build_export_depend>
+  <build_export_depend>libboost-thread-dev</build_export_depend>
+  <build_export_depend>message_filters</build_export_depend>
+  <build_export_depend>nodelet</build_export_depend>
+  <build_export_depend>pluginlib</build_export_depend>
+  <build_export_depend>roscpp</build_export_depend>
+</package>

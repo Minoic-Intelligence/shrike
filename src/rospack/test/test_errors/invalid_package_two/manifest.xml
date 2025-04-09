@@ -1,0 +1,5 @@
+<package>
+  <depend package="invalid_package_one"/>
+  <depend package="blacklisted_catkin_package_dont_accept_pull_requests_with_this_name_either"/>
+  <depend package="another_valid_package"/>
+</package>

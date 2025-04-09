@@ -1,0 +1,26 @@
+<package>
+  <name>rosbuild</name>
+  <version>1.15.8</version>
+  <description>
+    rosbuild contains scripts for managing the CMake-based build system for ROS.
+  </description>
+  <maintainer email="michel@ekumenlabs.com">Michel Hidalgo</maintainer>
+  <maintainer email="jacob@openrobotics.org">Jacob Perron</maintainer>
+  <license>BSD</license>
+
+  <url>http://ros.org/wiki/rosbuild</url>
+
+  <author>Brian Gerkey</author>
+  <author>Troy Straszheim</author>
+  <author>Morgan Quigley</author>
+  <author email="dthomas@openrobotics.org">Dirk Thomas</author>
+
+  <buildtool_depend version_gte="0.5.78">catkin</buildtool_depend>
+
+  <build_depend>pkg-config</build_depend>
+
+  <run_depend>catkin</run_depend>
+  <!-- workaround to provide the generators to dry downstream packages -->
+  <run_depend>message_generation</run_depend>
+  <run_depend>message_runtime</run_depend>
+</package>

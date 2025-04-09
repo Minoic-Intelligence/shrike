@@ -1,0 +1,71 @@
+# This config uses industrial_ci (https://github.com/ros-industrial/industrial_ci.git).
+# For troubleshooting, see readme (https://github.com/ros-industrial/industrial_ci/blob/master/README.rst)
+
+name: CI
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+
+jobs:
+  default:
+    strategy:
+      fail-fast: false
+      matrix:
+        distro: [noetic, jammy]
+        ogre: ["1.9", "1.12"]
+        include:
+          - qt: 5
+            cxxflags: -Werror
+          - distro: noetic
+            ogre: 1.9
+            env:
+              CLANG_TIDY: true
+          - distro: jammy
+            ogre: 1.12
+            qt: 6
+            cxxflags: -Wno-deprecated-declarations -Werror
+          - distro: noetic
+            ogre: 13.6
+            qt: 5
+
+    env:
+      CXXFLAGS: "-DRVIZ_DEPRECATE_QT4_SLOTS -Wall -Wextra -Wwrite-strings -Wunreachable-code -Wpointer-arith -Wredundant-decls -Wno-strict-aliasing -Wno-sign-compare ${{ matrix.cxxflags}}"
+      UPSTREAM_WORKSPACE: ${{ matrix.distro != 'jammy' && 'github:rhaschke/python_qt_binding#silent-external-warnings' || '' }}
+      AFTER_INIT: ${{ startsWith(matrix.ogre, '13') && 'apt install -q -y software-properties-common && add-apt-repository ppa:s-schmeisser/ogre-13-focal -y' || ''}}
+      AFTER_INSTALL_TARGET_DEPENDENCIES: apt install -qq -y libogre-${{ matrix.ogre }}-dev
+      CATKIN_LINT: true
+      CMAKE_ARGS: -DRVIZ_QT_VERSIONS="${{ matrix.qt }}"
+      CCACHE_DIR: ${{ github.workspace }}/.ccache
+      BASEDIR: /home/runner/work
+      DOCKER_IMAGE: rhaschke/ici:rviz-${{ matrix.distro }}-ros
+      CACHE_PREFIX: ${{ matrix.distro }}
+      # perform full clang-tidy check only on manual trigger (workflow_dispatch), PRs do check changed files, otherwise nothing
+      CLANG_TIDY_BASE_REF: ${{ github.event_name != 'workflow_dispatch' && (github.base_ref || github.ref) || '' }}
+
+    name: "${{ matrix.distro }} • ogre ${{ matrix.ogre }} • Qt ${{ matrix.qt }}${{ matrix.env.CLANG_TIDY && (github.event_name != 'workflow_dispatch' && ' • clang-tidy (delta)' || ' • clang-tidy (all)') || '' }}"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache ccache
+        uses: rhaschke/cache@main
+        with:
+          path: ${{ env.CCACHE_DIR }}
+          key: ccache-${{ env.CACHE_PREFIX }}-${{ github.sha }}-${{ github.run_id }}
+          restore-keys: |
+            ccache-${{ env.CACHE_PREFIX }}-${{ github.sha }}
+            ccache-${{ env.CACHE_PREFIX }}
+        env:
+          GHA_CACHE_SAVE: always
+
+      - name: industrial_ci
+        uses: rhaschke/industrial_ci@master
+
+      - name: Upload test artifacts (on failure)
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: test-results
+          path: ${{ env.BASEDIR }}/target_ws/**/test_results/**/*.xml

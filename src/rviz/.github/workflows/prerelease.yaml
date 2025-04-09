@@ -1,0 +1,44 @@
+# This config uses industrial_ci (https://github.com/ros-industrial/industrial_ci.git).
+# For troubleshooting, see readme (https://github.com/ros-industrial/industrial_ci/blob/master/README.rst)
+
+name: pre-release
+
+on: [workflow_dispatch]
+
+jobs:
+  default:
+    strategy:
+      matrix:
+        distro: [noetic]
+
+    env:
+      ROS_DISTRO: ${{ matrix.distro }}
+      PRERELEASE: true
+      BASEDIR: /home/runner/work
+      CCACHE_DIR: ${{ github.workspace }}/.ccache
+      CACHE_PREFIX: "${{ matrix.env.IMAGE }}${{ matrix.env.CCOV && '-ccov' || '' }}"
+
+    name: "${{ matrix.distro }}"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cache ccache
+        uses: rhaschke/cache@main
+        with:
+          path: ${{ env.CCACHE_DIR }}
+          key: ccache-${{ env.CACHE_PREFIX }}-${{ github.sha }}-${{ github.run_id }}
+          restore-keys: |
+            ccache-${{ env.CACHE_PREFIX }}-${{ github.sha }}
+            ccache-${{ env.CACHE_PREFIX }}
+        env:
+          GHA_CACHE_SAVE: always
+
+      - name: industrial_ci
+        uses: rhaschke/industrial_ci@master
+
+      - name: Upload test artifacts (on failure)
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: test-results
+          path: ${{ env.BASEDIR }}/target_ws/**/test_results/**/*.xml

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<?xml-model
+  href="http://download.ros.org/schema/package_format3.xsd"
+  schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>position_controllers</name>
+  <version>0.22.0</version>
+  <description>position_controllers</description>
+
+  <maintainer email="bence.magyar.robotics@gmail.com">Bence Magyar</maintainer>
+  <maintainer email="mathias.luedtke@ipa.fraunhofer.de">Mathias Lüdtke</maintainer>
+  <maintainer email="enrique.fernandez.perdomo@gmail.com">Enrique Fernandez</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">https://github.com/ros-controls/ros_controllers/wiki</url>
+  <url type="bugtracker">https://github.com/ros-controls/ros_controllers/issues</url>
+  <url type="repository">https://github.com/ros-controls/ros_controllers</url>
+
+  <author>Vijay Pradeep</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  
+  <build_depend>forward_command_controller</build_depend> 
+  <build_depend>hardware_interface</build_depend> 
+  <build_depend>pluginlib</build_depend>
+  <build_depend>roscpp</build_depend> 
+
+  <build_export_depend>forward_command_controller</build_export_depend> 
+  <build_export_depend>hardware_interface</build_export_depend> 
+  
+  <exec_depend>controller_interface</exec_depend> 
+  <exec_depend>roscpp</exec_depend> 
+
+  <export>
+    <controller_interface plugin="${prefix}/position_controllers_plugins.xml"/>
+  </export>
+</package>

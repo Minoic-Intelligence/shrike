@@ -1,0 +1,7 @@
+<launch>
+  <node name="geneus" pkg="geneus" type="gen_eus.py"
+        args="$(find geneus)/test/test.msg -Igeneus:$(find geneus)/test -p geneus -o $(find geneus)/test" />
+  <node name="send_msgs" pkg="geneus" type="test_geneus_send_msgs.py" />
+  <test test-name="test_geneus" pkg="roseus" type="roseus" args="$(find geneus)/test/test-geneus.l" />
+</launch>
+

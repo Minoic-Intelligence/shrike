@@ -1,0 +1,18 @@
+<library path="src">
+  <class name="Moveit" type="rqt_moveit.moveit_plugin.MoveitPlugin"
+         base_class_type="rqt_gui_py::Plugin">
+    <description>
+      GUI to support monitoring during Moveit! runtime.
+    </description>
+    <qtgui>
+      <group>
+        <label>Robot Tools</label>
+        <icon type="theme">folder</icon>
+        <statustip>Plugins related to robot tools.</statustip>
+      </group>
+      <label>Moveit! Monitor (experimental)</label>
+      <icon type="theme">accessories-text-editor</icon>
+      <statustip>GUI to support monitoring during Moveit! runtime.</statustip>
+    </qtgui>
+  </class>
+</library>

@@ -1,0 +1,23 @@
+<package>
+  <name>mk</name>
+  <version>1.15.8</version>
+  <description>
+    A collection of .mk include files for building ROS architectural elements.
+    Most package authors should use cmake .mk, which calls CMake for the build of the package.
+    The other files in this package are intended for use in exotic situations that mostly arise when importing 3rdparty code.
+  </description>
+  <maintainer email="michel@ekumenlabs.com">Michel Hidalgo</maintainer>
+  <maintainer email="jacob@openrobotics.org">Jacob Perron</maintainer>
+  <license>BSD</license>
+
+  <url>http://www.ros.org/wiki/ROS</url>
+
+  <author>Brian Gerkey</author>
+  <author>Morgan Quigley</author>
+  <author email="dthomas@openrobotics.org">Dirk Thomas</author>
+
+  <buildtool_depend version_gte="0.5.69">catkin</buildtool_depend>
+
+  <run_depend>rosbuild</run_depend>
+  <run_depend>rospack</run_depend>
+</package>

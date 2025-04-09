@@ -1,0 +1,29 @@
+
+Authors
+-------
+The Stage programs, libraries, configuration scripts, examples and 
+graphics are copyright these authors, and may be used only under the 
+terms of the GNU General Public License version 2 or later:
+
+- Richard Vaughan (vaughan@sfu.ca)
+- Brian Gerkey (gerkey@willowgarage.com)
+- Reed Hedges (hedges@mobilerobots.com)
+- Andrew Howard (andrew.b.howard@jpl.nasa.gov)
+- Toby Collett (tcollett+player@plan9.net.nz)
+- Pooya Karimian (pooyak@sfu.ca)
+- Jeremy Asher (jra11@sfu.ca)
+- Alex Couture-Beil (asc17@sfu.ca)
+- Geoff Biggs (git@killbots.net)
+- Rich Mattes (jpgr87@github.com)
+- Abbas Sadat (abbas.sadat@gmail.com)
+- Adrian Böckenkamp (boeckenkamp@ls7.cs.tu-dortmund.de)
+
+Many patches and bug reports have been contributed by users around the
+world.  Stage is part of the Player Project (http://playerstage.org), 
+a community effort to develop free Software tools for robotics research.
+
+Project Lead / Maintainer
+------------------------
+
+- Stage v4. : Richard Vaughan (vaughan@sfu.ca)
+- Stage v2,3. : Toby Collett (tcollett+player@plan9.net.nz)

@@ -1,0 +1,26 @@
+<package format="2">
+  <name>realtime_tools</name>
+  <version>1.16.1</version>
+  <description>Contains a set of tools that can be used from a hard
+    realtime thread, without breaking the realtime behavior.</description>
+  <maintainer email="bence.magyar.robotics@gmail.com">Bence Magyar</maintainer>
+  <maintainer email="gennaro.raiola@iit.it">Gennaro Raiola</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://ros.org/wiki/realtime_tools</url>
+  <url type="bugtracker">https://github.com/ros-controls/realtime_tools/issues</url>
+  <url type="repository">https://github.com/ros-controls/realtime_tools/</url>
+
+  <author email="sglaser@willowgarage.com">Stuart Glaser</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>roscpp</depend>
+
+  <build_export_depend>actionlib</build_export_depend>
+
+  <test_depend>rosunit</test_depend>
+  <test_depend>rostest</test_depend>
+  <test_depend>actionlib</test_depend>
+</package>

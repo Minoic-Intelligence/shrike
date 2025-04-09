@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>webkit_dependency</name>
+  <version>1.1.2</version>
+  <description>This encapsulates the WebKit dependency for a specific ROS distribution and its Qt version</description>
+  <maintainer email="dthomas@osrfoundation.org">Dirk Thomas</maintainer>
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend condition="$ROS_PYTHON_VERSION == 2">python-qt5-bindings-webkit</exec_depend>
+  <exec_depend condition="$ROS_PYTHON_VERSION == 3">python3-qt5-bindings-webkit</exec_depend>
+</package>

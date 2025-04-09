@@ -1,0 +1,238 @@
+Stage INSTALL.txt
+=================
+
+These are the Stage installation instructions, both quick and longer
+versions. They are intended for experienced programmers. This is not a
+tutorial.
+
+For release notes see RELEASE.txt
+For introduction and license see README.txt
+
+
+Quick start: Build Stage from RTV's Github 
+------------------------------------------
+
+Tested 2011.8.5 on: 
+
+ - OS X 10.7 Lion
+ - Ubuntu 11.04
+
+1) Install Stage's dependencies (for Ubuntu and OS X specific instructions, see the next paragraph).
+
+ FLTK >=1.1
+ git
+ cmake
+ pkg-config
+ libpng
+ jpeglib
+ OpenGLU 
+
+On Ubuntu 11.10 I install these packages:
+
+$ sudo apt-get install git cmake g++ fltk1.1-dev libjpeg8-dev libpng12-dev libglu1-mesa-dev libltdl-dev	
+
+On the Mac I use Homebrew, since MacPorts installs way more than Stage
+needs (http://mxcl.github.com/homebrew/). First, install Apple's XCode
+and enable the command-line build tools. Then brew the dependencies:
+
+$ brew install --HEAD fltk cmake git pkg-config
+
+(OS X has the graphics libs installed by default with XCode). 
+
+If you want to use Player/Stage, install and test Player now.
+
+2) Get and build Stage 
+
+$ mkdir stage4
+$ cd stage4
+$ git clone git://github.com/rtv/Stage.git
+$ export STG=$HOME/stg
+$ cmake -DCMAKE_INSTALL_PREFIX=$STG Stage
+$ make
+
+3) Install and set up environment
+
+$ make install
+
+On OS X:
+
+$ export DYLD_LIBRARY_PATH=$STG/lib
+
+On Linux:
+
+$ export LD_LIBRARY_PATH=$STG/lib
+
+4) Run Stage
+$ stage Stage/worlds/simple.world
+
+5) Please report build issues, bugs or other problems  using the tracker at  http://github.com/rtv/Stage/issues
+ 
+
+--- Longer instructions ------------------------------------------
+
+Build system
+------------
+Stage is now built using the CMake build system (version 2.4.7 or
+newer).  This has two main advantages over the old GNU
+autoconf/automake system: (i) it is much faster; (ii) CMake can create
+native build files for Windows and Mac OS X, which will help Stage
+become more portable.
+
+Dependencies
+------------
+Building Stage requires the following tools and libraries:
+
+- pkg-config
+- FLTK 1.1.x 
+- OpenGL
+- libpng
+- ltdl (Libtool)
+
+The optional Player plugin requires Player >= 2.1.
+
+The optional Avonstage web-enabled binary requires Avon >= 0.1.
+
+On a typical Debian based Linux distribution (like Ubuntu & Mint) you can install above dependencies using this command: (assuming that you have already installed build tools like cmake and build-essentials)
+
+sudo apt-get install pkg-config libfltk1.1-dev libgl1-mesa-dev libglu1-mesa-dev libpng12-dev libtool 
+
+Please note that OpenGL libraries (gl1 & glu1) come with graphics card drivers and they are vendor based, therefore you need to inatall required drivers for your graphics card first. 
+
+Configuring the build
+---------------------
+Unpack the distribution or check it out from Git. Change directory to
+the top level of the Stage source tree.
+
+First, you may need to help CMake find your the libraries on which
+Stage depends. For example, if you use MacPorts on OS X, packages are
+usually installed in `/opt/local`, which is not in CMake's default
+system search path. Add your non-standard software directories to
+CMake's search paths by setting environment variables, e.g. in bash:
+
+	$ export CMAKE_INCLUDE_PATH=/opt/local/include
+	$ export CMAKE_LIBRARY_PATH=/opt/local/lib
+
+If you want to use Player with Stage, install Player first, then make
+sure that pkg-config can find it. Test it like so:
+
+	$ pkg-config --modversion playercore
+
+This should output the version number of the Player installation
+(probably 2.2.0 or later). If not, add the location of Player's
+pkg-config file to your `PKG_CONFIG_PATH`, eg. in bash, and replacing <Player installation prefix> with the correct directory, do:
+
+	$ export PKG_CONFIG_PATH+=<Player installation prefix>/lib/pkgconfig
+
+Now that the supporting software is set up, you can decide where you
+want to install Stage. The default installation directory varies by
+system, but is often `/usr/local` on Unix variants. This is easy and is
+often a good choice, but has the disadvantage that installation needs
+root/sudo priviliges. To install in the default location, do:
+
+	$ cmake .
+
+If you wish to install Stage elsewhere, define the `CMAKE_INSTALL_PATH`
+path variable when invoking cmake. To do this, use this command,
+substituting `<prefix>` with your chosen installation
+directory.
+	
+	$ cmake -DCMAKE_INSTALL_PREFIX=<prefix> .
+
+For example to install in `$HOME/playerstage`, do:
+
+	$ cmake -DCMAKE_INSTALL_PREFIX=$HOME/playerstage .
+
+Cmake will generate makefiles specifically for your machine. When this
+is done, you can inspect and edit the build settings by using ccmake:
+
+	$ ccmake .
+
+or by editing the file CMakeCache.txt manually.
+
+Building
+--------
+In the top level directory of the source tree, do:
+
+	$ make
+
+Installing
+----------
+In the top level directory of the source tree, do:
+
+	$ make install
+
+(You may need to run this command as root or sudo, depending on the
+install location).
+
+Stage will install its components in various directories, for example:
+
+	<prefix>/bin    (executables, including the 'stage' program)  
+	<prefix>/lib    (libraries, including libstage)  
+	<prefix>/share  (contains data resources, such as images)
+
+Setup
+-----
+You must ensure that the dynamic library libstage.so (or
+libstage.dylib, or libstage.dll, depending on your platform) can be
+found by your system's library loader. The method for doing this
+varies by platform.
+
+On Linux, using bash:
+
+	$ export LD_LIBRARY_PATH=<prefix>/lib
+
+On OS X, using bash:
+
+	$ export DYLD_LIBRARY_PATH=<prefix>/lib
+
+If you plan to use Stage plugins, you also need to set the `STAGEPATH`
+environment variable to include the directory that contains your
+plugins. E.g. in bash, do:
+
+	$ export STAGEPATH=/usr/local/lib
+
+If you installed Stage somewhere other than `/usr/local`, substitute
+your install prefix:
+
+	$ export STAGEPATH=<stage install prefix>/lib
+
+If you are using Stage with Player, you probably don't need to set the
+`STAGEPATH`. However, you may need to set the `PLAYERPATH` to include
+Stage's installed lib directory instead.
+
+Testing
+-------
+To test your Stage installation, do:
+
+	$ <prefix>/bin/stage worlds/simple.world
+
+You should see a window appear, showing some robots. You can change
+the camera point of view by holding down the 'ctrl' key and moving the
+mouse pointer. If this works, you are ready to write your own robot
+simulations using libstage.
+
+If you plan to use Stage plugins, you can test that plugins are
+working:
+
+	$ <prefix>/bin/stage worlds/fasr.world
+
+You should see a window appear, showing some robots. Try pressing the
+'p' key to pause and un-pause the simulation, to check that the robots
+are working. If this works, you are ready to write Stage plugins.
+
+(If the stage window is flicking or some texts are not shown properly on Linux, try to disable compiz, if it is enabled)
+
+Next steps
+----------
+- read the Stage manual, available from the Player Project website
+  (also buildable from the docsrc directory in the source tree
+  (requires doxygen)).
+
+- look at the examples provided in the worlds and examples
+  directories.
+
+
+Enjoy using Stage -- rtv
+
+"All the world's a stage, and all the men and women merely players"  
+  Wm. Shakespeare - "As you like it"

@@ -1,0 +1,14 @@
+<package>
+  <name>media_export</name>
+  <version>0.3.0</version>
+  <description>
+     Placeholder package enabling generic export of media paths.
+  </description>
+  <maintainer email="william@osrfoundation.org">William Woodall</maintainer>
+  <license>BSD</license>
+
+  <author>Dave Hershberger</author>
+  <url>http://ros.org/wiki/media_export</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+</package>

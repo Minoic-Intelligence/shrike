@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<?xml-model
+  href="http://download.ros.org/schema/package_format3.xsd"
+  schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>rqt_robot_monitor</name>
+  <version>0.5.15</version>
+  <description>rqt_robot_monitor displays diagnostics_agg topics messages that
+   are published by <a href = "http://www.ros.org/wiki/diagnostic_aggregator">diagnostic_aggregator</a>.
+   rqt_robot_monitor is a direct port to rqt of
+   <a href = "http://www.ros.org/wiki/robot_monitor">robot_monitor</a>. All
+   diagnostics are fall into one of three tree panes depending on the status of
+   diagnostics (normal, warning, error/stale). Status are shown in trees to
+   represent their hierarchy. Worse status dominates the higher level status.<br />
+   <ul>
+    Ex. 'Computer' category has 3 sub devices. 2 are green but 1 is error. Then
+        'Computer' becomes error.
+   </ul>
+  You can look at the detail of each status by double-clicking the tree nodes.<br />
+
+  Currently re-usable API to other pkgs are not explicitly provided.
+  </description>
+  <maintainer email="ablasdel@gmail.com">Aaron Blasdel</maintainer>
+  <maintainer email="arne.hitzmann@gmail.com">Arne Hitzmann</maintainer>
+  <maintainer email="namniart@gmail.com">Austin Hendrix</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://wiki.ros.org/rqt_robot_monitor</url>
+  <url type="repository">https://github.com/ros-visualization/rqt_robot_monitor</url>
+  <url type="bugtracker">https://github.com/ros-visualization/rqt_robot_monitor/issues</url>
+
+  <author>Austin Hendrix</author>
+  <author>Isaac Saito</author>
+  <author>Ze'ev Klapow</author>
+  <author>Kevin Watts</author>
+  <author>Josh Faust</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend condition="$ROS_PYTHON_VERSION == 2">python-setuptools</buildtool_depend>
+  <buildtool_depend condition="$ROS_PYTHON_VERSION == 3">python3-setuptools</buildtool_depend>
+
+  <exec_depend>diagnostic_msgs</exec_depend>
+  <exec_depend version_gte="0.2.19">python_qt_binding</exec_depend>
+  <exec_depend condition="$ROS_PYTHON_VERSION == 2">python-rospkg-modules</exec_depend>
+  <exec_depend condition="$ROS_PYTHON_VERSION == 3">python3-rospkg-modules</exec_depend>
+  <exec_depend>qt_gui</exec_depend>
+  <exec_depend>qt_gui_py_common</exec_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>rqt_py_common</exec_depend>
+  <exec_depend>rqt_gui</exec_depend>
+  <exec_depend>rqt_gui_py</exec_depend>
+  <exec_depend>rqt_bag</exec_depend>
+
+  <export>
+    <rqt_gui plugin="${prefix}/plugin.xml" />
+    <rqt_bag plugin="${prefix}/bag_plugin.xml" />
+  </export>
+</package>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   x="0px"
+   y="0px"
+   width="54px"
+   height="30px"
+   viewBox="0 0 54 30"
+   enable-background="new 0 0 54 30"
+   xml:space="preserve"
+   id="svg2"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="ic-battery-100-green.svg"><metadata
+   id="metadata761"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
+   id="defs759" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1276"
+   inkscape:window-height="983"
+   id="namedview757"
+   showgrid="false"
+   inkscape:zoom="10.37037"
+   inkscape:cx="27.153039"
+   inkscape:cy="16.701553"
+   inkscape:window-x="0"
+   inkscape:window-y="35"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="svg2" />
+
+
+
+
+
+
+
+<g
+   id="_x31_00_x25__1_">
+	
+	<path
+   fill="#767875"
+   d="M49.08,0.034H9.233c-2.712,0-4.919,2.207-4.919,4.92v4.202h-2.27C0.917,9.156,0,10.073,0,11.2v8.521   c0,1.127,0.917,2.043,2.044,2.043h2.27v3.258c0,2.713,2.207,4.92,4.919,4.92H49.08c2.713,0,4.92-2.207,4.92-4.92V4.954   C54,2.241,51.793,0.034,49.08,0.034z M2.357,19.406v-7.893h1.957v7.893H2.357z M51.559,25.021c0,1.366-1.112,2.479-2.479,2.479   H9.233c-1.366,0-2.478-1.112-2.478-2.479V4.954c0-1.367,1.112-2.479,2.478-2.479H49.08c1.366,0,2.479,1.112,2.479,2.479V25.021z"
+   id="path119" />
+	
+	<g
+   id="g126">
+		<path
+   d="m 16,23 c 0,1.1 -0.9,2 -2,2 h -2 c -1.1,0 -2,-0.9 -2,-2 V 7 c 0,-1.1 0.9,-2 2,-2 h 2 c 1.1,0 2,0.9 2,2 v 16 z"
+   id="path128"
+   style="fill:#78bd43;fill-opacity:1"
+   inkscape:connector-curvature="0" />
+		<path
+   d="m 24,23 c 0,1.1 -0.9,2 -2,2 h -2 c -1.1,0 -2,-0.9 -2,-2 V 7 c 0,-1.1 0.9,-2 2,-2 h 2 c 1.1,0 2,0.9 2,2 v 16 z"
+   id="path130"
+   style="fill:#78bd43;fill-opacity:1"
+   inkscape:connector-curvature="0" />
+		<path
+   d="m 32,23 c 0,1.1 -0.9,2 -2,2 h -2 c -1.1,0 -2,-0.9 -2,-2 V 7 c 0,-1.1 0.9,-2 2,-2 h 2 c 1.1,0 2,0.9 2,2 v 16 z"
+   id="path132"
+   style="fill:#78bd43;fill-opacity:1"
+   inkscape:connector-curvature="0" />
+		<path
+   d="m 40,23 c 0,1.1 -0.9,2 -2,2 h -2 c -1.1,0 -2,-0.9 -2,-2 V 7 c 0,-1.1 0.9,-2 2,-2 h 2 c 1.1,0 2,0.9 2,2 v 16 z"
+   id="path134"
+   style="fill:#78bd43;fill-opacity:1"
+   inkscape:connector-curvature="0" />
+		
+		<path
+   d="m 48,23 c 0,1.1 -0.9,2 -2,2 h -2 c -1.1,0 -2,-0.9 -2,-2 V 7 c 0,-1.1 0.9,-2 2,-2 h 2 c 1.1,0 2,0.9 2,2 v 16 z"
+   id="path138"
+   style="fill:#78bd43;fill-opacity:1"
+   inkscape:connector-curvature="0" />
+	</g>
+	<g
+   id="Cell_gloss_16_"
+   opacity="0.2">
+		<path
+   fill="#FFFFFF"
+   d="M38,5h-2c-1.1,0-2,0.9-2,2v8h6V7C40,5.9,39.1,5,38,5z"
+   id="path141" />
+	</g>
+	<g
+   id="Cell_gloss_17_"
+   opacity="0.2">
+		<path
+   fill="#FFFFFF"
+   d="M30,5h-2c-1.1,0-2,0.9-2,2v8h6V7C32,5.9,31.1,5,30,5z"
+   id="path144" />
+	</g>
+	<g
+   id="Cell_gloss_18_"
+   opacity="0.2">
+		<path
+   fill="#FFFFFF"
+   d="M22,5h-2c-1.1,0-2,0.9-2,2v8h6V7C24,5.9,23.1,5,22,5z"
+   id="path147" />
+	</g>
+	<g
+   id="Cell_gloss_19_"
+   opacity="0.2">
+		<path
+   fill="#FFFFFF"
+   d="M14,5h-2c-1.1,0-2,0.9-2,2v8h6V7C16,5.9,15.1,5,14,5z"
+   id="path150" />
+	</g>
+<g
+   transform="translate(8,0)"
+   style="opacity:0.2"
+   id="Cell_gloss_16_-1"><path
+     style="fill:#ffffff"
+     inkscape:connector-curvature="0"
+     d="m 38,5 h -2 c -1.1,0 -2,0.9 -2,2 v 8 h 6 V 7 C 40,5.9 39.1,5 38,5 z"
+     id="path141-3" /></g></g>
+
+
+
+
+
+
+<g
+   id="Gloss">
+	<g
+   id="g748">
+		<linearGradient
+   id="SVGID_10_"
+   gradientUnits="userSpaceOnUse"
+   x1="0"
+   y1="7.5171"
+   x2="54"
+   y2="7.5171">
+			<stop
+   offset="0"
+   style="stop-color:#FFFFFF"
+   id="stop751" />
+			<stop
+   offset="1"
+   style="stop-color:#FFFFFF"
+   id="stop753" />
+		</linearGradient>
+		<path
+   opacity="0.2"
+   fill="url(#SVGID_10_)"
+   d="M49.08,0.034H9.233c-2.712,0-4.919,2.207-4.919,4.92v4.202h-2.27    C0.917,9.156,0,10.073,0,11.2V15h2.357v-3.487h1.957V15h2.441V4.954c0-1.367,1.112-2.479,2.478-2.479H49.08    c1.366,0,2.479,1.112,2.479,2.479V15H54V4.954C54,2.241,51.793,0.034,49.08,0.034z"
+   id="path755" />
+	</g>
+</g>
+</svg>

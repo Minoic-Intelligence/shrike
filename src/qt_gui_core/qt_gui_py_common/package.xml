@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<?xml-model
+  href="http://download.ros.org/schema/package_format3.xsd"
+  schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>qt_gui_py_common</name>
+  <version>0.4.2</version>
+  <description>
+    qt_gui_py_common provides common functionality for GUI plugins written in Python.
+  </description>
+  <maintainer email="scholz@sim.tu-darmstadt.de">Dorian Scholz</maintainer>
+  <license>BSD</license>
+
+  <url type="website">http://ros.org/wiki/qt_gui_py_common</url>
+  <url type="repository">https://github.com/ros-visualization/qt_gui_core</url>
+  <url type="bugtracker">https://github.com/ros-visualization/qt_gui_core/issues</url>
+  <author>Dorian Scholz</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend condition="$ROS_PYTHON_VERSION == 2">python-setuptools</buildtool_depend>
+  <buildtool_depend condition="$ROS_PYTHON_VERSION == 3">python3-setuptools</buildtool_depend>
+
+  <exec_depend version_gte="0.3.0">python_qt_binding</exec_depend>
+  <exec_depend condition="$ROS_PYTHON_VERSION == 2">python-rospkg</exec_depend>
+  <exec_depend condition="$ROS_PYTHON_VERSION == 3">python3-rospkg</exec_depend>
+</package>

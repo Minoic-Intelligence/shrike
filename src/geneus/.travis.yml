@@ -1,0 +1,28 @@
+sudo: required
+dist: trusty
+language: c++
+notifications:
+  email:
+    on_success: always
+    on_failure: always
+env:
+  matrix:
+    - OS=ubuntu DISTRO=focal USE_GENMSG_BINARY='true'
+    - OS=ubuntu DISTRO=focal USE_GENMSG_BINARY='false'
+    - OS=debian DISTRO=sid USE_GENMSG_BINARY='true'
+    - OS=debian DISTRO=sid USE_GENMSG_BINARY='false'
+    - DISTRO=xenial ROS_DISTRO=kinetic BUILDER='catkin_make'
+    - DISTRO=xenial ROS_DISTRO=kinetic BUILDER='catkin_make_isolated'
+    - DISTRO=xenial ROS_DISTRO=kinetic BUILDER='catkin build'
+    - DISTRO=bionic ROS_DISTRO=melodic BUILDER='catkin_make'
+    - DISTRO=bionic ROS_DISTRO=melodic BUILDER='catkin_make_isolated'
+    - DISTRO=bionic ROS_DISTRO=melodic BUILDER='catkin build'
+before_script:
+  - export DOCKER_IMAGE=${OS:-ubuntu}:$DISTRO
+  - export CI_SOURCE_PATH=$(pwd)
+  - export REPOSITORY_NAME=${PWD##*/}
+  - if [ ! "$ROS_PARALLEL_JOBS" ]; then export ROS_PARALLEL_JOBS="-j8 -l8";  fi
+  - if [ ! "$USE_GENMSG_BINARY" ]; then export TRAVIS_SCRIPT=".travis-ros.sh"; else export TRAVIS_SCRIPT=".travis-raw.sh"; fi
+  - docker images
+script:
+  - docker run -v $HOME:$HOME -e TRAVIS_SCRIPT -e USE_GENMSG_BINARY -e DOCKER_IMAGE -e CI_SOURCE_PATH -e REPOSITORY_NAME -e HOME -e DISTRO -e ROS_DISTRO -e BUILDER -e ROS_PARALLEL_JOBS $DOCKER_IMAGE bash -c 'cd $CI_SOURCE_PATH; source $TRAVIS_SCRIPT'

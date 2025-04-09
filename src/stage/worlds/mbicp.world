@@ -1,0 +1,26 @@
+
+include "pioneer.inc"
+include "map.inc"
+
+size [30 20]
+resolution 0.02
+
+window
+( 
+  size [ 987.000 507.000 ] 
+  center [0.603 -0.075] 
+  scale 32.588
+)
+
+floorplan
+( 
+  bitmap "bitmaps/mbicp.png"
+   size [28.000 10.000 0.500]
+  name "pruebaScan"
+)
+
+pioneer2dx
+(
+  name "robot1"
+  pose [8.000 0 0 180.000]
+)

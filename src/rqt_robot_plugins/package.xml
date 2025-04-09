@@ -1,0 +1,47 @@
+<package>
+  <name>rqt_robot_plugins</name>
+  <version>0.5.8</version>
+  <description>Metapackage of rqt plugins that are particularly used with robots
+   during its operation.<br />
+   <br />
+   To run any rqt plugins, just type in a single command "rqt", then select any plugins you want from the GUI that launches afterwards.<br />
+   <br />
+   rqt consists of three following metapackages:<br />
+    <ul>
+     <li><a href = "http://ros.org/wiki/rqt">rqt</a> - provides a container window
+         where all rqt tools can be docked at. rqt plugin developers barely
+         needs to pay attention.</li>
+     <li><a href = "http://ros.org/wiki/rqt_common_plugins">rqt_common_plugins</a> -
+         ROS backend tools suite that can be used on/off of robot runtime.</li>
+     <li>rqt_robot_plugins (You're here!)</li>
+    </ul>
+  </description>
+  <maintainer email="ablasdel@gmail.com">Aaron Blasdel</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://ros.org/wiki/rqt_robot_plugins</url>
+  <url type="repository">https://github.com/ros-visualization/rqt_robot_plugins</url>
+  <url type="bugtracker">https://github.com/ros-visualization/rqt_robot_plugins/issues</url>
+
+  <author>Dirk Thomas</author>
+  <author>Aaron Blasdel</author>
+  <author>Dorian Scholz</author>
+  <author>Ze'ev Klapow</author>
+  <author>Isaac Saito</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <run_depend>rqt_moveit</run_depend>
+  <run_depend>rqt_nav_view</run_depend>
+  <run_depend>rqt_pose_view</run_depend>
+  <run_depend>rqt_robot_dashboard</run_depend>
+  <run_depend>rqt_robot_monitor</run_depend>
+  <run_depend>rqt_robot_steering</run_depend>
+  <run_depend>rqt_runtime_monitor</run_depend>
+  <run_depend>rqt_rviz</run_depend>
+  <run_depend>rqt_tf_tree</run_depend>
+
+  <export>
+    <metapackage/>
+  </export>
+</package>

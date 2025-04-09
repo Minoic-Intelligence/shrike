@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<package>
+  <name>rqt_action</name>
+  <version>0.4.9</version>
+  <description>rqt_action provides a feature to introspect all available ROS
+  action (from actionlib) types. By utilizing rqt_msg, the output format is
+  unified with it and rqt_srv. Note that the actions shown on this plugin
+  is the ones that are stored on your machine, not on the ROS core your rqt
+  instance connects to.</description>
+
+  <maintainer email="mikael@osrfoundation.org">Mikael Arguedas</maintainer>
+  <maintainer email="ablasdel@gmail.com">Aaron Blasdel</maintainer>
+  <maintainer email="geoffrey.biggs@aist.go.jp">Geoffrey Biggs</maintainer>
+  <license>BSD</license>
+
+  <url type="website">http://wiki.ros.org/rqt_action</url>
+  <url type="repository">https://github.com/ros-visualization/rqt_action</url>
+  <url type="bugtracker">https://github.com/ros-visualization/rqt_action/issues</url>
+
+  <author>Isaac Isao Saito</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- 3/11/2013 (Isaac) run_depend on actionlib will be commented out for now
+  until rqt_py_common.rosaction gets moved to actionlib. -->
+  <!-- <run_depend>actionlib</run_depend> -->
+  <run_depend>rospy</run_depend>
+  <run_depend>rqt_msg</run_depend>
+  <run_depend>rqt_py_common</run_depend>
+
+  <export>
+    <architecture_independent/>
+    <rqt_gui plugin="${prefix}/plugin.xml"/>
+  </export>
+</package>
