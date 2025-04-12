@@ -28,6 +28,7 @@ Now you can use `roscore` and other ROS1 commands in your terminal.
 
 ## Related Projects and Credits
 - [rules_ros](https://github.com/mvukov/rules_ros): Build ROS1 with Bazel.
+- [rosconsole](https://github.com/lucasw/rosconsole/tree/ubuntu_2210): lucasw's fork of rosconsole.
 
 ## Disclaimer
 Note that this project is not affiliated with OSRF.
