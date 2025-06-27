@@ -55,6 +55,17 @@ class RospyLogger(logging.getLoggerClass()):
         Find the stack frame of the caller so that we can note the source
         file name, line number, and function name with class name if possible.
         """
+        # hack: https://github.com/ros/ros_comm/issues/2352
+        # Increment the "stacklevel" param, be it a positional or keyword
+        # argument. Otherwise the call to the parent class's findCaller
+        # function will simply return this location.
+        if len(args) > 1:
+            args_list = list(args)
+            args_list[1] += 1
+            args = tuple(args_list)
+        if 'stacklevel' in kwargs:
+            kwargs['stacklevel'] = kwargs['stacklevel'] + 1
+
         file_name, lineno, func_name = super(RospyLogger, self).findCaller(*args, **kwargs)[:3]
         file_name = os.path.normcase(file_name)
 
